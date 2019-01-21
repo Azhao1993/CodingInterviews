@@ -1,5 +1,5 @@
 package TreeNode;
-
+//二叉树节点类
 public class TreeNode {
 	public int val = 0;
 	public TreeNode left = null;
