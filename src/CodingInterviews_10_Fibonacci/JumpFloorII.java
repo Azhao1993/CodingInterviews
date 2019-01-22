@@ -6,6 +6,7 @@ package CodingInterviews_10_Fibonacci;
 		求该青蛙跳上一个n级的台阶总共有多少种跳法。
  */
 public class JumpFloorII {
+	// f(n)=2^(n-1)
 	public int JumpFloor2(int target) {
 		if (target < 0) {
 			return 0;
