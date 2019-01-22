@@ -7,6 +7,6 @@ package CodingInterviews_21_ReorderArray;
  */
 public class ReorderArray {
 	public void reOrderArray(int[] array) {
-
+		int length = array.length;
 	}
 }
