@@ -65,7 +65,7 @@ public class ReorderArray {
 		}
 	}
 
-	// ====================方法二====================
+	// ====================方法二(函数做为参数传递)====================
 	// 负数在非负数前面
 	// 能被3整除的在不能被3整除的前面
 	void ReorderOddEven_2(int[] pData) {
@@ -73,7 +73,7 @@ public class ReorderArray {
 		Reorder(pData, length);
 	}
 
-	public void Reorder(int[] pData, int length) {
+	public void Reorder(int[] pData, int length,) {
 		if (pData == null || length == 0)
 			return;
 
