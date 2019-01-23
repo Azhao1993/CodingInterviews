@@ -39,6 +39,21 @@ public class ReverseList {
 		}
 		// 返回新头节点
 		return newHead;
+	}
 
+	// 递归
+	public ListNode reverseList1(ListNode head) {
+		// 没有节点或者只有一个节点
+		if (head == null || head.next == null) {
+			return head;
+		}
+		// 如果存在下一个节点
+		ListNode newHead = reverseList1(head.next);
+		// head的下一个节点指向head
+		head.next.next = head;
+		// 将head下一个节点改为空节点
+		head.next = null;
+		// 返回新头节点
+		return newHead;
 	}
 }
