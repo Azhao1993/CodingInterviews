@@ -49,7 +49,7 @@ public class MirrorOfBinaryTree {
 		Stack<TreeNode> stackTreeNode = new Stack<TreeNode>();
 		stackTreeNode.push(pRoot);
 
-		while (stackTreeNode.size() > 0) {
+		while (!stackTreeNode.isEmpty()) {
 			TreeNode pNode = stackTreeNode.pop();
 
 			TreeNode pTemp = pNode.left;
