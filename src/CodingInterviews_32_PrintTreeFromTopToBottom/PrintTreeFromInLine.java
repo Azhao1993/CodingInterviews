@@ -1,4 +1,4 @@
-package CodingInterviews_32_01_PrintTreeFromTopToBottom;
+package CodingInterviews_32_PrintTreeFromTopToBottom;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -10,7 +10,7 @@ import TreeNode.TreeNode;
 	面试题32（一）：不分行从上往下打印二叉树
 		从上往下打印出二叉树的每个结点，同一层的结点按照从左到右的顺序打印。
  */
-public class PrintTreeFromTopToBottom {
+public class PrintTreeFromInLine {
 	// 队列
 	public ArrayList<Integer> PrintFromTopToBottom(TreeNode root) {
 		Queue<TreeNode> queue = new LinkedList<TreeNode>();
@@ -31,5 +31,6 @@ public class PrintTreeFromTopToBottom {
 		}
 		return result;
 	}
-	// cpp版本同上
+	// cpp版本改写
+	// 同上
 }
