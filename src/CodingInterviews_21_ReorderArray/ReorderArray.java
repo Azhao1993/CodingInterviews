@@ -68,38 +68,6 @@ public class ReorderArray {
 	// ====================方法二(函数做为参数传递)====================
 	// 负数在非负数前面
 	// 能被3整除的在不能被3整除的前面
-	void ReorderOddEven_2(int[] pData) {
-		int length = pData.length;
-		Reorder(pData, length);
-	}
-
-	public void Reorder(int[] pData, int length,) {
-		if (pData == null || length == 0)
-			return;
-
-		int pBegin = 0;
-		int pEnd = length - 1;
-
-		while (pBegin < pEnd) {
-			// 向后移动pBegin
-			while (pBegin < pEnd && !isEven(pData[pBegin]))
-				pBegin++;
-
-			// 向前移动pEnd
-			while (pBegin < pEnd && isEven(pData[pEnd]))
-				pEnd--;
-
-			if (pBegin < pEnd) {
-				int temp = pData[pBegin];
-				pData[pBegin] = pData[pEnd];
-				pData[pEnd] = temp;
-			}
-		}
-	}
-
-	// 判断是否是奇数
-	public boolean isEven(int n) {
-		return (n & 1) == 0;
-	}
+	
 
 }
