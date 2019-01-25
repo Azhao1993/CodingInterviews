@@ -7,6 +7,7 @@ package CodingInterviews_58_ReverseString;
 		比如输入字符串"abcdefg"和数字2，该函数将返回左旋转2位得到的结果"cdefgab"。
  */
 public class LeftRotateString {
+
 	public String leftRotateString(String str, int n) {
 		if (str == null || n > str.length()) {
 			return "";
@@ -16,6 +17,6 @@ public class LeftRotateString {
 		sb.delete(0, n).append(temp);
 		return sb.toString();
 	}
-	//cpp版本改写
-	
+	// cpp版本改写
+
 }
