@@ -9,7 +9,7 @@ import java.util.HashSet;
 		当从该字符流中读出前六个字符"google"时，第一个只出现一次的字符是'l'。
  */
 public class FirstNotRepeatingCharInStream {
-	// Insert one char from stringstream
+	// Insert one char from string stream
 	HashSet<Character> set = new HashSet<Character>();
 	StringBuilder sb = new StringBuilder();
 
