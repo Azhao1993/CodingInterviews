@@ -1,4 +1,4 @@
-package CodingInterviews_32_PrintTreeFromTopToBottom;
+package CodingInterviews_32_PrintTree;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
