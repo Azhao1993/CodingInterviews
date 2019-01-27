@@ -26,4 +26,40 @@ public class FindDuplication {
 		}
 		return false;
 	}
+
+	// cpp版本改写
+
+	// 参数:
+	// numbers: 一个整数数组
+	// length: 数组的长度
+	// duplication: (输出) 数组中的一个重复的数字
+	// 返回值:
+	// true - 输入有效，并且数组中存在重复的数字
+	// false - 输入无效，或者数组中没有重复的数字
+	public boolean duplicateCppToJava(int[] numbers, int length, int[] duplication) {
+		if (numbers == null || length <= 0)
+			return false;
+
+		for (int i = 0; i < length; ++i) {
+			if (numbers[i] < 0 || numbers[i] > length - 1)
+				return false;
+		}
+
+		for (int i = 0; i < length; ++i) {
+			while (numbers[i] != i) {
+				if (numbers[i] == numbers[numbers[i]]) {
+					duplication[0] = numbers[i];
+					return true;
+				}
+
+				// 交换numbers[i]和numbers[numbers[i]]
+				int temp = numbers[i];
+				numbers[i] = numbers[temp];
+				numbers[temp] = temp;
+			}
+		}
+
+		return false;
+	}
+
 }
