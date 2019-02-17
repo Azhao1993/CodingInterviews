@@ -1,7 +1,6 @@
 package CodingInterviewChinese_40_KLeastNumbers;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 /*
 	面试题40：最小的k个数
