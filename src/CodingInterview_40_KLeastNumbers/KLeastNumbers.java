@@ -1,4 +1,4 @@
-package CodingInterviewChinese_40_KLeastNumbers;
+package CodingInterview_40_KLeastNumbers;
 
 import java.util.ArrayList;
 
