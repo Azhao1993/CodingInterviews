@@ -10,7 +10,7 @@ import java.util.Arrays;
  */
 public class StringPermutation {
 	public static void main(String[] args) {
-		String str = "abc";
+		String str = "abbc";
 		StringPermutation sp = new StringPermutation();
 		sp.Permutation(str);
 	}
@@ -37,6 +37,8 @@ public class StringPermutation {
 		for (int i = 0; i < nums.length; i++) {
 			if (used[i])
 				continue;
+			//i = i-1 
+			//i-1Î´ÓÃ
 			if (i > 0 && nums[i - 1] == nums[i] && !used[i - 1])
 				continue;
 			used[i] = true;
