@@ -3,7 +3,7 @@ package CodingInterviews_52_FirstCommonNodesInLists;
 import ListNode.ListNode;
 
 /*
-	面试题52：两个链表的第一个公共结点
+	面试题52：两个链表的第一个公共结点(题目要求不明确，环，双向链表)
 		输入两个链表，找出它们的第一个公共结点。
  */
 public class FirstCommonNodesInLists {
