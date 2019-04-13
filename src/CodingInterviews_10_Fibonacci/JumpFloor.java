@@ -10,7 +10,7 @@ public class JumpFloor {
 		if (target < 0) {
 			return 0;
 		}
-		if (target <= 1) {
+		if (target <= 1) { 
 			return 1;
 		} else {
 			return jumpFloor(target - 1) + jumpFloor(target - 2);
