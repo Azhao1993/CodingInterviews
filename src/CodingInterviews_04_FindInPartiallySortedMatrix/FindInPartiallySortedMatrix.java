@@ -15,47 +15,17 @@ public class FindInPartiallySortedMatrix {
 		}
 		int col = array.length;
 		int row = array[0].length;
-		if (target < array[0][0] || array[col - 1][row - 1] < target) {
-			return false;
-		}
-		int c = 0;
-		while (target > array[c][row - 1]) {
-			c++;
-		}
-		int r = 0;
-		while (target > array[col - 1][r]) {
-			r++;
-		}
-		for (int i = c; i < col; i++) {
-			for (int j = r; j < row; j++) {
-				if (target == array[i][j]) {
-					return true;
-				}
+		int m = 0;
+		int n = row - 1;
+		while (m < col && n >= 0) {
+			if (array[m][n] == target) {
+				return true;
+			} else if (array[m][n] < target) {
+				m++;
+			} else {
+				n--;
 			}
 		}
 		return false;
-	}
-
-	// cpp代码改写/左神算法课
-	public boolean Find(int[][] matrix, int rows, int columns, int number) {
-		boolean found = false;
-		if (matrix != null && rows > 0 && columns > 0) {
-			int row = 0;// 行
-			int column = columns - 1;// 列
-			// A（row,column）为起点
-			while (row < rows && column >= 0) {
-				if (matrix[row][column] == number) {
-					found = true;
-					break;
-				} else if (matrix[row][column] > number) {
-					// 大,向前移动
-					--column;
-				} else {
-					// 小，想下移动
-					++row;
-				}
-			}
-		}
-		return found;
 	}
 }
