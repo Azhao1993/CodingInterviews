@@ -12,43 +12,39 @@ import ListNode.ListNode;
  */
 public class PrintListInReversedOrder {
 	// 打印后修改
+
+	// 用栈来代替翻转
 	public ArrayList<Integer> printListFromTailToHead(ListNode listNode) {
 		ArrayList<Integer> result = new ArrayList<Integer>();
 		if (listNode == null) {
 			return result;
 		}
+
+		Stack<ListNode> stack = new Stack<>();
 		while (listNode != null) {
-			result.add(listNode.val);
+			stack.push(listNode);
 			listNode = listNode.next;
 		}
-		Collections.reverse(result);
+		while (!stack.isEmpty()) {
+			result.add(stack.pop().val);
+		}
 		return result;
 	}
 
-	// cpp版本改写：用栈来代替翻转
-	public void PrintListReversingly_Iteratively(ListNode pHead) {
-		Stack<ListNode> nodes = new Stack<ListNode>();
-
-		ListNode pNode = pHead;
-		while (pNode != null) {
-			nodes.push(pNode);
-			pNode = pNode.next;
+	// 递归
+	public ArrayList<Integer> printListFromTailToHead2(ListNode listNode) {
+		ArrayList<Integer> result = new ArrayList<Integer>();
+		if (listNode == null) {
+			return result;
 		}
-
-		while (!nodes.isEmpty()) {
-			pNode = nodes.pop();
-			System.out.println(pNode.val);
-		}
+		PrintListReversingly_Recursively(listNode, result);
+		return result;
 	}
 
-	// 递归
-	public void PrintListReversingly_Recursively(ListNode pHead) {
-		if (pHead != null) {
-			if (pHead.next != null) {
-				PrintListReversingly_Recursively(pHead.next);
-			}
-
-			System.out.println(pHead.val);
+	public void PrintListReversingly_Recursively(ListNode pHead, ArrayList<Integer> result) {
+		if (pHead.next != null) {
+			PrintListReversingly_Recursively(pHead.next, result);
 		}
+		result.add(pHead.val);
 	}
 }
