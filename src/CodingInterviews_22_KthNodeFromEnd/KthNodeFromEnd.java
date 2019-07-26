@@ -8,25 +8,23 @@ import ListNode.ListNode;
  */
 public class KthNodeFromEnd {
 	public ListNode FindKthToTail(ListNode head, int k) {
-		ListNode left = head;
-		ListNode right = head;
-		if (k <= 0 || head == null) {
+		if (head == null || k < 0) {
 			return null;
 		}
-		int count = 1;
-		while (right != null) {
-			if (count <= k) {
+		ListNode right = head;
+		for (int i = 0; i < k; i++) {
+			if (right != null) {
 				right = right.next;
-				count++;
 			} else {
-				left = left.next;
-				right = right.next;
+				return null;
 			}
 		}
-		if (count <= k) {
-			return null;
+
+		while (right != null) {
+			right = right.next;
+			head = head.next;
 		}
-		return left;
+		return head;
 	}
 
 	// cpp°æ±¾¸ÄÐ´
