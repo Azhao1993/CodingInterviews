@@ -31,39 +31,36 @@ public class SubstructureInTree {
 		return result;
 	}
 
-	// cpp°æ±¾¸ÄĞ´
-	public boolean HasSubtreeCpptoJava(TreeNode pRoot1, TreeNode pRoot2) {
-		boolean result = false;
+	// µİ¹é
+	public boolean HasSubtree2(TreeNode root1, TreeNode root2) {
+		boolean res = false;
+		if (root1 != null && root2 != null) {
+			if (root1.val == root2.val) {
+				res = isSame(root1, root2);
+			}
+			if (!res) {
+				res = HasSubtree(root1.left, root2);
+			}
+			if (!res) {
+				res = HasSubtree(root1.right, root2);
+			}
 
-		if (pRoot1 != null && pRoot2 != null) {
-			if (Equal(pRoot1.val, pRoot2.val))
-				result = DoesTree1HaveTree2(pRoot1, pRoot2);
-			if (!result)
-				result = HasSubtreeCpptoJava(pRoot1.left, pRoot2);
-			if (!result)
-				result = HasSubtreeCpptoJava(pRoot1.right, pRoot2);
+		}
+		return res;
+	}
+
+	private boolean isSame(TreeNode root1, TreeNode root2) {
+		if (root2 == null) {
+			return true;
+		}
+		if (root1 == null) {
+			return false;
+		}
+		if (root1.val == root2.val) {
+			return isSame(root1.right, root2.right) && isSame(root1.left, root2.left);
+		} else {
+			return false;
 		}
 
-		return result;
-	}
-
-	public boolean DoesTree1HaveTree2(TreeNode pRoot1, TreeNode pRoot2) {
-		if (pRoot2 == null)
-			return true;
-
-		if (pRoot1 == null)
-			return false;
-
-		if (!Equal(pRoot1.val, pRoot2.val))
-			return false;
-
-		return DoesTree1HaveTree2(pRoot1.left, pRoot2.left) && DoesTree1HaveTree2(pRoot1.right, pRoot2.right);
-	}
-
-	public boolean Equal(double num1, double num2) {
-		if ((num1 - num2 > -0.0000001) && (num1 - num2 < 0.0000001))
-			return true;
-		else
-			return false;
 	}
 }
