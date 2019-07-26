@@ -29,12 +29,18 @@ public class ConstructBinaryTree {
 				rootIndex = i;
 			}
 		}
-		root.left = reConstructBinaryTree(pre, in, pre_left + 1, pre_left + rootIndex - in_left, in_left,
-				rootIndex - 1);
-		root.right = reConstructBinaryTree(pre, in, pre_right - in_right + rootIndex + 1, pre_right, rootIndex + 1,
-				in_right);
+		int leftLength = rootIndex - in_left;
+		// pre_left = pre_left+1
+		// pre_right = pre_left+length
+		// in_left = in_left
+		// in_right = rootIndex-1
+		root.left = reConstructBinaryTree(pre, in, pre_left + 1, pre_left + leftLength, in_left, rootIndex - 1);
+		// pre_left = pre_right+1
+		// pre_right = pre_right
+		// in_left = rootIndex+1
+		// in_right = in_right
+		root.right = reConstructBinaryTree(pre, in, pre_left + leftLength + 1, pre_right, rootIndex + 1, in_right);
 		return root;
 	}
-	//cpp°æ±¾¸ÄÐ´
-	
+
 }
