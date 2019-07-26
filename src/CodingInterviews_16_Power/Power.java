@@ -8,18 +8,27 @@ package CodingInterviews_16_Power;
 public class Power {
 	// 注意:0^0无意义
 	public double power(double base, int exponent) {
-		double result = 1;
+		Math.pow(base, exponent);
+		double res = 1;
 		if (exponent == 0) {
-			return result;
+			return res;
 		}
-		if (exponent < 0) {
-			return 1 / (power(base, -1 * exponent));
-		} else {
-			for (int i = 0; i < exponent; i++) {
-				result *= base;
+		boolean flag = exponent < 0;
+		if (flag) {
+			exponent = -exponent;
+		}
+		// 快速幂
+		while (exponent > 0) {
+			if ((exponent & 1) == 1) {
+				res *= base;
 			}
+			base *= base;
+			exponent >>= 1;
 		}
-		return result;
+		if (flag) {
+			res = 1 / res;
+		}
+		return res;
 	}
 
 	// cpp代码改写
