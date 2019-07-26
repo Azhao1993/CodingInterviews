@@ -10,18 +10,21 @@ import TreeNode.TreeNode;
  */
 public class MirrorOfBinaryTree {
 	public void Mirror(TreeNode root) {
-		if (root == null || (root.left == null && root.right == null)) {
+		if (root == null || root.right == null && root.left == null) {
 			return;
 		}
-		TreeNode temp = root.left;
-		root.left = root.right;
-		root.right = temp;
-		if (root.left != null) {
-			Mirror(root.left);
+		getMirror(root);
+	}
+
+	public TreeNode getMirror(TreeNode root) {
+		if (root == null) {
+			return null;
 		}
-		if (root.right != null) {
-			Mirror(root.right);
-		}
+		TreeNode left = getMirror(root.right);
+		TreeNode right = getMirror(root.left);
+		root.left = left;
+		root.right = right;
+		return root;
 	}
 
 	// cpp°æ±¾¸ÄÐ´
