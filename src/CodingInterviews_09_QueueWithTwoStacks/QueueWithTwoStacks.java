@@ -24,4 +24,7 @@ public class QueueWithTwoStacks {
 	public int pop() {
 		return stack1.pop();
 	}
+	
+	
+	
 }

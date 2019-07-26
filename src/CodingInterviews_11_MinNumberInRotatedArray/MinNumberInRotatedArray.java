@@ -13,11 +13,8 @@ public class MinNumberInRotatedArray {
 		if (array == null || array.length == 0) {
 			return 0;
 		}
-		// 数组长度为1
-		if (array.length == 1) {
-			return array[0];
-		}
-		// 存在旋转
+
+		// 存在旋转 O(N)
 		for (int i = 1; i < array.length; i++) {
 			if (array[i] < array[i - 1]) {
 				return array[i];
@@ -27,47 +24,45 @@ public class MinNumberInRotatedArray {
 		return array[0];
 	}
 
-	// cpp版本改写
-	public int Min(int[] numbers, int length) {
-		if (numbers == null || length <= 0) {
+	// 数据情况好的时候为 O(logN)
+	public int minNumberInRotateArray2(int[] array) {
+		if (array == null || array.length == 0) {
 			return 0;
 		}
 
-		int index1 = 0;
-		int index2 = length - 1;
-		int indexMid = index1;
-		while (numbers[index1] >= numbers[index2]) {
-			// 如果index1和index2指向相邻的两个数，
-			// 则index1指向第一个递增子数组的最后一个数字，
-			// index2指向第二个子数组的第一个数字，也就是数组中的最小数字
-			if (index2 - index1 == 1) {
-				indexMid = index2;
-				break;
+		int left = 0;// 前半段（大）
+		int right = array.length - 1;// 后半段（小）
+
+		while (left <= right) {
+			if (left + 1 == right) {
+				// 此时left为前半段的最后一个，right为后半段的第一个
+				return array[right];
+			}
+			int mid = (left + right) / 2;
+			if (array[left] == array[mid] && array[right] == array[left]) {
+				// 无法判断出在哪一段只能进行遍历查找
+				return minInArray(array, left, right);
 			}
 
-			// 如果下标为index1、index2和indexMid指向的三个数字相等，
-			// 则只能顺序查找
-			indexMid = (index1 + index2) / 2;
-			if (numbers[index1] == numbers[index2] && numbers[indexMid] == numbers[index1])
-				return MinInOrder(numbers, index1, index2);
+			if (array[mid] >= array[left]) {
+				// 最小值在后半段
+				left = mid;
+			}
 
-			// 缩小查找范围
-			if (numbers[indexMid] >= numbers[index1])
-				index1 = indexMid;
-			else if (numbers[indexMid] <= numbers[index2])
-				index2 = indexMid;
+			if (array[mid] <= array[right]) {
+				// 最小值在前半段
+				right = mid;
+			}
 		}
-
-		return numbers[indexMid];
+		return 0;
 	}
 
-	public int MinInOrder(int[] numbers, int index1, int index2) {
-		int result = numbers[index1];
-		for (int i = index1 + 1; i <= index2; ++i) {
-			if (result > numbers[i])
-				result = numbers[i];
+	private int minInArray(int[] array, int left, int right) {
+		for (int i = left + 1; i <= right; i++) {
+			if (array[i] < array[i - 1]) {
+				return array[i];
+			}
 		}
-
-		return result;
+		return array[left];
 	}
 }
