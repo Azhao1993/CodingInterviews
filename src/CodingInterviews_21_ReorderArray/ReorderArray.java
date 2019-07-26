@@ -15,25 +15,26 @@ public class ReorderArray {
 		if (array == null || array.length <= 1) {
 			return;
 		}
-		int right = array.length - 1;
-		while (right > 0) {
-			while (array[right] % 2 == 0) {
-				right--;
+
+		// 插入排序的思想
+		for (int i = 1; i < array.length; i++) {
+			if (!isEven(array[i])) {
+				continue;
 			}
-			for (int j = right - 1; j >= 0; j--) {
-				if (array[j] % 2 == 0) {
-					for (int t = j; t < right; t++) {
-						int temp = array[t];
-						array[t] = array[t + 1];
-						array[t + 1] = temp;
-					}
+			for (int j = i; j > 0; j--) {
+				if (isEven(array[j - 1])) {
 					break;
-				}
-				if (j == 0) {
-					return;
+				} else {
+					int temp = array[j];
+					array[j] = array[j - 1];
+					array[j - 1] = temp;
 				}
 			}
 		}
+	}
+
+	private boolean isEven(int i) {
+		return i % 2 == 1;
 	}
 
 	// cpp版本改写
@@ -68,6 +69,5 @@ public class ReorderArray {
 	// ====================方法二(函数做为参数传递)====================
 	// 负数在非负数前面
 	// 能被3整除的在不能被3整除的前面
-	
 
 }
