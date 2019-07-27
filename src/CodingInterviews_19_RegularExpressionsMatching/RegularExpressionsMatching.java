@@ -62,4 +62,24 @@ public class RegularExpressionsMatching {
 			return matchTwo(str, i, length1, pattern, j + 2, length2);
 		return false;
 	}
+
+	public boolean match2(char[] str, char[] pattern) {
+		if (str.length == 0 && pattern.length == 0) {
+			return true;
+		}
+		boolean[][] dp = new boolean[str.length + 1][pattern.length + 1];
+		dp[str.length][pattern.length] = true;
+		for (int i = str.length; i >= 0; i--) {
+			for (int j = pattern.length; j >= 0; j--) {
+				boolean first_match = (i < str.length && (pattern[j] == str[i] || pattern[j] == '.'));
+				if (j + 1 < pattern.length && pattern[j + 1] == '*') {
+					dp[i][j] = dp[i][j + 2] || first_match && dp[i + 1][j];
+				} else {
+					dp[i][j] = first_match && dp[i + 1][j + 1];
+				}
+			}
+		}
+		return dp[0][0];
+	}
+
 }
